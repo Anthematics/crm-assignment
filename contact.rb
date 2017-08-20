@@ -1,8 +1,10 @@
-class Contact
 require 'pry'
-@@allcontacts = [{first_name: @first_name, last_name: @last_name, email: @email, note: @note} ]
-@@accountnumbers = 1000
+class Contact
+	@@allcontacts = [{first_name: @first_name, last_name: @last_name, email: @email, note: @note} ]
+	@@accountnumbers = 1000
+
 	# This method should initialize the contact's attributes
+
 	def initialize (first_name,last_name,email,note)
 		@accountid = @@accountnumbers+=1
 		@first_name = first_name
@@ -12,21 +14,12 @@ require 'pry'
 	end
 
 
-# username = gets.chomp
-# user = {
-#   username: username,
-#   pin: 10,
-#   balance: 100
-# }
-# puts "Your account is: #{user}"
 
-	# This method should call the initializer,
-	# store the newly created contact, and then return it
-
+	#create method works (tested)
 	def self.create(first_name,last_name,email,note)
-		create=Contact.new(first_name,last_name,email,note)
-		@@allcontacts << create #shovel into all contacts array
-		create
+		acreate=Contact.new(first_name,last_name,email,note)
+		@@allcontacts << acreate #shovel into all contacts array
+		acreate
 	end
 
 	#readers - so values can be accessed.
@@ -42,21 +35,30 @@ require 'pry'
 		@email
 	end
 
+	def note
+		@note
+	end
 	# Writer methods (to allow changes to be made )
 
-	# This method should return all of the existing contacts
+	# This method should return all of the existing contacts (doesnt seem to be culprit )
 	def self.all
 		@@allcontacts
-			return self
+			return @@allcontacts
 	end
-	#
-	# # This method should accept an id as an argument
-	# # and return the contact who has that id
+
+	# This method should accept an id as an argument
+	# and return the contact who has that id
 	def self.find
+		user=gets.chomp
+			accounts.each do|user|
+				if user=@@accountnumbers
+					return user
+			end
 
 	end
 
 	# This method should allow you to specify
+	# (writer)
 	# 1. which of the contact's attributes you want to update
 	# 2. the new value for that attribute
 	# and then make the appropriate change to the contact
@@ -64,36 +66,34 @@ require 'pry'
 
 	end
 
-	# This method should work similarly to the find method above
-	# but it should allow you to search for a contact using attributes other than id
-	# by specifying both the name of the attribute and the value
-	# eg. searching for 'first_name', 'Betty' should return the first contact named Betty
+	# findby #nosyntax errors - needs testing
 	def self.find_by
-				puts "who are we looking for?"
-				 user=gets.chomp
-						accounts.each do |user|
-							return user if user == @first_name | @last_name | @email #shouldinteratethroughthearrayandreturnvaluesthat
-							end
-						end
-					end
-
+			user=gets.chomp
+				accounts.each do |user|
+				 if user == @first_name | @last_name | @email #shouldinteratethroughthearrayandreturnvaluesthat
+					 return user
+				 end
 	end
 
-	# This method should delete all of the contacts
+#delete all - no errors plez test.
 	def self.delete_all
 		@@allcontacts.clear
 	end
 
+#no errors plez test.
 	def full_name
 		full_name= @first_name+ @last_name
 	end
 
 	# This method should delete the contact
 	# HINT: Check the Array class docs for built-in methods that might be useful here
-	# def delete
-	# 	@@allcontacts delete
-	#
-	# end
+	def delete
+		 user=gets.chomp
+			accounts.each do|user|
+				@@allcontacts.slice(user)  == @first_name| @last_name| @email
+			end
+	end
+
 end
 
 jason=Contact.create("jason","pimp","jason@pimp.pimp","thisguy")
