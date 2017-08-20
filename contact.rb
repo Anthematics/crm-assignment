@@ -46,47 +46,49 @@ class Contact
 			return @@allcontacts
 	end
 
-	# This method should accept an id as an argument
-	# and return the contact who has that id
+	# This method should accept an id as an argumenttax
+# 	# and return the contact who has that id - this method is safe -commented out not causing 101 syn
 	def self.find
 		user=gets.chomp
 			accounts.each do|user|
 				if user=@@accountnumbers
 					return user
+				end
 			end
-
 	end
-
-	# This method should allow you to specify
-	# (writer)
-	# 1. which of the contact's attributes you want to update
-	# 2. the new value for that attribute
-	# and then make the appropriate change to the contact
-	def update
-
-	end
-
-	# findby #nosyntax errors - needs testing
+# 	end
+#
+# 	# This method should allow you to specify
+# 	# (writer)
+# 	# 1. which of the contact's attributes you want to update
+# 	# 2. the new value for that attribute
+# 	# and then make the appropriate change to the contact
+# 	def update
+#
+# 	end
+#
+# 	# findby #nosyntax errors - needs testing
 	def self.find_by
-			user=gets.chomp
-				accounts.each do |user|
-				 if user == @first_name | @last_name | @email #shouldinteratethroughthearrayandreturnvaluesthat
-					 return user
-				 end
+		user=gets.chomp
+			accounts.each do |user|
+				if user == @first_name | @last_name | @email #shouldinteratethroughthearrayandreturnvaluesthat
+					return user
+				end
+			end
 	end
-
-#delete all - no errors plez test.
+#
+# #delete all - no errors plez test.
 	def self.delete_all
 		@@allcontacts.clear
 	end
-
+#
 #no errors plez test.
 	def full_name
 		full_name= @first_name+ @last_name
 	end
-
-	# This method should delete the contact
-	# HINT: Check the Array class docs for built-in methods that might be useful here
+#
+# 	# This method should delete the contact (tested no syntax)
+# 	# HINT: Check the Array class docs for built-in methods that might be useful here
 	def delete
 		 user=gets.chomp
 			accounts.each do|user|
