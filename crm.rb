@@ -37,8 +37,8 @@ class Crm #DON'T I DARE EVER IN MY LIFE INHERIT AND REQIRE FROM THE SAME SOURCE 
 
 	def search_menu(user_selected3)
 		case user_selected3
-		when 1 then find_byfirst_name
-		when 2 then find_bylast_name
+		when 1 then find_byfirst
+		when 2 then find_bylast
 		when 3 then find_byemail
 		end
 	end
@@ -61,15 +61,26 @@ class Crm #DON'T I DARE EVER IN MY LIFE INHERIT AND REQIRE FROM THE SAME SOURCE 
 	end
 end
 
-	def find_byfirst_name
-
+	def find_byfirst
+		puts "what is the first name of the person you are searching for?"
+		firstnamese=gets.chomp
+		contact = Contact.find_by(first_name: firstnamese)
+		puts contact.inspect
 	end
 
-	def find_bylast_name
+	def find_bylast
+		puts "what is the last name of the person you are searching for?"
+		lastnamese=gets.chomp
+		contact2=Contact.find_by(last_name:lastnamese)
+		puts contact2.inspect
 
 	end
 
 	def find_byemail
+		puts "what is the email address of the person you are searching for?"
+		seemail=gets.chomp
+		contact3 = Contact.find_by(email:seemail)
+		puts contact.inspect
 
 	end
 
@@ -113,7 +124,7 @@ end
 		puts "enter the email of the contact you would like to delete"
 		emailaddy3 = gets.chomp.to_s #to string??
 		emaildel = Contact.where(email:emailaddy3)
-		Contact.delete(emailaddy3)
+		Contact.delete(emaildel)
 	end
 
 	def display_all_contacts
@@ -135,7 +146,6 @@ end
 
 	def search_options
 		print_search_options
-
 	end
 
 	def add_new_contact
